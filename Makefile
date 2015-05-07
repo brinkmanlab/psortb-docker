@@ -15,8 +15,6 @@ help:
 	@echo ""
 	@echo "     make build        - Build image $(IMAGE_NAME)"
 	@echo "     make push         - Push $(IMAGE_NAME) to public docker repo"
-	@echo "     make local        - Link $(NAME) to MySQL, access local system files and run $(NAME)"
-	@echo "     make link         - Link $(NAME) to MySQL and run $(NAME)"
 	@echo "     make run          - Run $(NAME) container"
 	@echo "     make start        - Start the EXISTING $(NAME) container"
 	@echo "     make stop         - Stop $(NAME) container"
