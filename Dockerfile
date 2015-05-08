@@ -18,6 +18,19 @@ RUN apt-get update && apt-get -yq install openssh-client \
 	libjson-rpc-perl
 #	fort77 \
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install supervisor && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ADD conf/supervisord.conf /etc/supervisor/conf.d/
+ADD conf/envvars /etc/apache2/
+
+# Manually set the apache environment variables in order to get apache to work immediately.
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
+
+
 WORKDIR /usr/local/src
 
 RUN echo '/usr/local/lib64' >>/etc/ld.so.conf
@@ -60,3 +73,5 @@ RUN /etc/init.d/apache2 restart
 # Expose the web service to the world
 EXPOSE 80
 
+ADD conf/run.sh /opt/
+CMD ["/opt/run.sh"]
