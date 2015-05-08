@@ -3,7 +3,7 @@ Docker build environment for PSORTb
 
 ##Quick Start
 ```bash
-    $ git clone https://github.com/htmlgraphic/Apache.git && cd Apache
+    $ git clone https://github.com/lairdm/psortb-docker.git && cd psortb-docker
     $ make
     $ make build
     $ make run
