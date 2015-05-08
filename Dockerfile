@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER Matthew Laird <lairdm@sfu.ca>
 
 # Install packages then remove cache package list information
-RUN apt-get update && apt-get -yq install openssh-client \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -yq install openssh-client \
         apache2 \
 	curl \
 	wget \
