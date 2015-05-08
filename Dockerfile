@@ -21,7 +21,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -yq install openssh
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install supervisor && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD conf/supervisord.conf /etc/supervisor/conf.d/
-ADD conf/envvars /etc/apache2/
 
 # Manually set the apache environment variables in order to get apache to work immediately.
 ENV APACHE_RUN_USER www-data
