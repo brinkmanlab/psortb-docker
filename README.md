@@ -8,3 +8,5 @@ Docker build environment for PSORTb
     $ make build
     $ make run
 ```
+
+Then point your browser at http://localhost/ to start PSORTing.
