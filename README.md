@@ -1,34 +1,35 @@
 # psortb-docker
 Docker build environment for PSORTb
 
+# Overview
+PSORTb is a bioinformatics tool for predicting subcellular localization for a given set of protein sequences. The protein sequences used in the analysis must belong to one type of organism, classified by cell membrane type in order to more accurately predict subcellular localization. The supported organism types are:
+
+   * Gram negative
+   * Gram positive
+   * Archaea
+   * Gram negative without outer membrane
+   * Gram positive with outer membrane
+   
+The current data downloaded into the Docker image is version 3.0.6.
+
 ## Quick Start
 ```bash
     $ git clone https://github.com/lairdm/psortb-docker.git && cd psortb-docker
-    $ make build
-    $ make run
+    $ sudo docker build -r mylab/psortb:3.0.6 .
+    $ sudo docker run -d -p 8000:80 --restart=always --name mylab/psortb:3.0.6
 ```
 
-Then point your browser at http://localhost/ to start PSORTing (or whatever host your Docker runs on).
+Then point your browser at http://localhost:8000 to start PSORTing.
 
-## More words
+A pre-built Docker image that this code builds is available at https://hub.docker.com/r/brinkmanlab/psortb (along with installation instructions).
 
-The full list of available commands:
+## Access to Other PSORT Tools
 
-```
-     make build        - Build image lairdm/psortb
-     make push         - Push lairdm/psortb to public docker repo
-     make run          - Run psortb container
-     make start        - Start the EXISTING psortb container
-     make stop         - Stop psortb container
-     make restart      - Stop and start psortb container
-     make remove       - Stop and remove psortb container
-     make state        - View state psortb container
-     make logs         - View logs in real time
-```
+PSORTb is offered as a web service to researchers at http://www.psort.org/psortb. This site has extensive documentation on the tool and methods.
 
-The Docker image exposes port 80, if this doesn't work for you, rather than "make run" you can manually start up the image using a different port.
+PSORTb is also available for command line access at https://hub.docker.com/r/brinkmanlab/psortb_commandline. Alternatively the command line PSORTb tool can be built outside Docker by using instructions available on https://www.psort.org/downloads/index.html.
 
-```bash
-    $ docker run -d -p 8000:80 --restart=always --name psortb lairdm/psortb:1.0.0
-```
+PSORTm (subcellular localization of Metagenomic sequences) can be found on Docker hub allowing both web service (https://hub.docker.com/r/brinkmanlab/psortm) and command line (https://hub.docker.com/r/brinkmanlab/psortm_commandline) access.
 
+## Authors
+The PSORTb and PSORTm tools listed here were developed by the Fiona Brinkman Laboratory at Simon Fraser University, Greater Vancouver, Canada.  Please contact us at psort-mail@sfu.ca.
