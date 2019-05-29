@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER Matthew Laird <lairdm@sfu.ca>
+LABEL current_maintainer="Gemma Hoad<ghoad@sfu.ca>" original_maintainer="Matthew Laird <lairdm@sfu.ca>"
 
 # Install packages then remove cache package list information
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -yq install openssh-client \
@@ -38,7 +38,7 @@ RUN wget http://www.psort.org/download/docker/pft2.3.4.docker64bit.tar.gz && tar
 
 RUN wget http://www.psort.org/download/libpsortb-1.0.tar.gz && tar zxvf libpsortb-1.0.tar.gz && cd libpsortb-1.0 && ./configure && make && make install && ldconfig
 
-RUN wget http://www.psort.org/download/bio-tools-psort-all.3.0.4.tar.gz && tar zxvf bio-tools-psort-all.3.0.4.tar.gz
+RUN wget http://www.psort.org/download/bio-tools-psort-all.3.0.6.tar.gz && tar zxvf bio-tools-psort-all.3.0.6.tar.gz
 
 WORKDIR /usr/local/src/bio-tools-psort-all
 
@@ -62,10 +62,10 @@ RUN wget http://www.psort.org/download/docker/Request.pm && cp Request.pm /usr/s
 
 RUN wget http://www.psort.org/download/docker/CGI-FastTemplate-1.09.tar.gz && tar zxvf CGI-FastTemplate-1.09.tar.gz && cd CGI-FastTemplate-1.09 && perl Makefile.PL && make && make install
 
-RUN cd /var/www/html && wget http://www.psort.org/download/docker/psort-web.tar.gz && tar zxvf psort-web.tar.gz
+RUN cd /var/www/html && wget http://www.psort.org/download/docker/psort-web-3.0.6.tar.gz && tar zxvf psort-web-3.0.6.tar.gz
 
 # Clean up a little
-RUN rm -r pft2.3.4.docker64bit.tar.gz libpsortb-1.0.tar.gz libpsortb-1.0 bio-tools-psort-all.3.0.4.tar.gz bio-tools-psort-all
+RUN rm -r /usr/local/src/pft2.3.4.docker64bit.tar.gz /usr/local/src/libpsortb-1.0.tar.gz /usr/local/src/bio-tools-psort-all.3.0.6.tar.gz CGI-FastTemplate-1.09.tar.gz apache-psortb.tar.gz apache-svm.tar.gz
 
 RUN /etc/init.d/apache2 restart
 
