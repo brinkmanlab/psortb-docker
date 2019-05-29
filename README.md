@@ -1,7 +1,7 @@
 # psortb-docker
 Docker build environment for PSORTb
 
-# Overview
+## Overview
 PSORTb is a bioinformatics tool for predicting subcellular localization for a given set of protein sequences. The protein sequences used in the analysis must belong to one type of organism, classified by cell membrane type in order to more accurately predict subcellular localization. The supported organism types are:
 
    * Gram negative
